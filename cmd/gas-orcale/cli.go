@@ -2,13 +2,14 @@ package main
 
 import (
 	"context"
-	"gas-oracle-main/common/cliapp"
-	"gas-oracle-main/common/opio"
-	"gas-oracle-main/config"
-	"gas-oracle-main/database"
 
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/urfave/cli/v2"
+
+	"github.com/Sandwichzzy/gas-oracle/common/cliapp"
+	"github.com/Sandwichzzy/gas-oracle/common/opio"
+	"github.com/Sandwichzzy/gas-oracle/config"
+	"github.com/Sandwichzzy/gas-oracle/database"
 )
 
 var (

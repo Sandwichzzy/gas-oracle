@@ -4,8 +4,9 @@ import (
 	"context"
 	"os"
 
-	"gas-oracle-main/common/opio"
 	"github.com/ethereum/go-ethereum/log"
+
+	"github.com/Sandwichzzy/gas-oracle/common/opio"
 )
 
 func main() {

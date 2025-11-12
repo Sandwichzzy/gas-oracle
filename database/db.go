@@ -10,8 +10,8 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"gas-oracle-main/config"
-	"gas-oracle-main/synchronizer/retry"
+	"github.com/Sandwichzzy/gas-oracle/config"
+	"github.com/Sandwichzzy/gas-oracle/synchronizer/retry"
 )
 
 type DB struct {
