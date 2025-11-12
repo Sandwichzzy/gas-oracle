@@ -1,0 +1,22 @@
+syntax="proto3";
+package gasOracle.gasFee;
+option go_package =".services/grpc/gasFeePb";
+
+
+message TokenGasPriceRequest {
+  string consumer_token=1;
+  uint64 chain_id=2;
+  string symbol=3;
+}
+
+message TokenGasPriceResponse {
+  uint64 return_code =1;
+  string message = 2;
+  string market_price =3;
+  string symbol = 4;
+  string predict_fee = 5;
+}
+
+service TokenGasPriceServices {
+  rpc getTokenPriceAndGasByChainId(TokenGasPriceRequest) returns(TokenGasPriceResponse) {}
+}
