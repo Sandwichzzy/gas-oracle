@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/urfave/cli/v2"
@@ -10,6 +11,7 @@ import (
 	"github.com/Sandwichzzy/gas-oracle/common/opio"
 	"github.com/Sandwichzzy/gas-oracle/config"
 	"github.com/Sandwichzzy/gas-oracle/database"
+	grpc2 "github.com/Sandwichzzy/gas-oracle/services/grpc"
 )
 
 var (
@@ -33,7 +35,21 @@ func runOracle(ctx *cli.Context, shutdown context.CancelCauseFunc) (cliapp.Lifec
 }
 
 func runGRPCSever(ctx *cli.Context, _ context.CancelCauseFunc) (cliapp.Lifecycle, error) {
-	return nil, nil
+	fmt.Println("running grpc services...")
+	cfg, err := config.New(ctx.String(ConfigFlag.Name))
+	if err != nil {
+		log.Error("config error", "err", err)
+		return nil, err
+	}
+	grpcServerCfg := &grpc2.TokenPriceRpcConfig{
+		Host: cfg.Server.Host,
+		Port: cfg.Server.Port,
+	}
+	db, err := database.NewDB(ctx.Context, cfg.MasterDb)
+	if err != nil {
+		log.Error("new database fail", "err", err)
+	}
+	return grpc2.NewTokenPriceRpcService(grpcServerCfg, db)
 }
 
 func runMigrations(ctx *cli.Context) error {
