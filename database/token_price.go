@@ -39,7 +39,7 @@ func NewTokenPriceDB(db *gorm.DB) TokenPriceDB {
 
 func (db *tokenPriceDB) StoreOrUpdateTokenPrice(tokenPrice *TokenPrice) error {
 	var tokenPriceRecord TokenPrice
-	err := db.gorm.Table("token_price").Where("token_symbol = ?", tokenPrice.TokenSymbol).Take(&tokenPriceRecord).Error
+	err := db.gorm.Table("token_price").Where("LOWER(token_symbol) = LOWER(?)", tokenPrice.TokenSymbol).Take(&tokenPriceRecord).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			result := db.gorm.Table("token_price").Omit("guid").Create(tokenPrice)
@@ -58,7 +58,7 @@ func (db *tokenPriceDB) StoreOrUpdateTokenPrice(tokenPrice *TokenPrice) error {
 
 func (db *tokenPriceDB) QueryTokenPrices(symbol string) (*TokenPrice, error) {
 	var tokenPrice TokenPrice
-	err := db.gorm.Table("token_price").Where("token_symbol = ?", symbol).Take(&tokenPrice).Error
+	err := db.gorm.Table("token_price").Where("LOWER(token_symbol) = LOWER(?)", symbol).Take(&tokenPrice).Error
 	if err != nil {
 		log.Error("get token price fail", "err", err)
 		return nil, err

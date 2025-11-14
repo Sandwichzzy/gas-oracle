@@ -175,7 +175,7 @@ const file_services_grpc_protobuf_gasfee_proto_rawDesc = "" +
 	"\vpredict_fee\x18\x05 \x01(\tR\n" +
 	"predictFee2\x8a\x01\n" +
 	"\x15TokenGasPriceServices\x12q\n" +
-	"\x1cgetTokenPriceAndGasByChainId\x12&.gasOracle.gasFee.TokenGasPriceRequest\x1a'.gasOracle.gasFee.TokenGasPriceResponse\"\x00B\x18Z\x16services/grpc/gasFeePbb\x06proto3"
+	"\x1cgetTokenPriceAndGasByChainId\x12&.gasOracle.gasFee.TokenGasPriceRequest\x1a'.gasOracle.gasFee.TokenGasPriceResponse\"\x00B\x19Z\x17.services/grpc/gasFeePbb\x06proto3"
 
 var (
 	file_services_grpc_protobuf_gasfee_proto_rawDescOnce sync.Once

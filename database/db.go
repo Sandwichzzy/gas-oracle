@@ -12,6 +12,7 @@ import (
 
 	"github.com/Sandwichzzy/gas-oracle/config"
 	"github.com/Sandwichzzy/gas-oracle/synchronizer/retry"
+	_ "github.com/Sandwichzzy/gas-oracle/database/utils/serializers"
 )
 
 type DB struct {

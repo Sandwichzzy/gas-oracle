@@ -1,6 +1,6 @@
 syntax="proto3";
 package gasOracle.gasFee;
-option go_package =".services/grpc/gasFeePb";
+option go_package ="services/grpc/gasFeePb";
 
 
 message TokenGasPriceRequest {

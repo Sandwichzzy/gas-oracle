@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"math/big"
 	"strconv"
-	"strings"
 
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/pkg/errors"
@@ -20,7 +19,7 @@ func (ms *TokenPriceRpcService) GetTokenPriceAndGasByChainId(ctx context.Context
 		return nil, err
 	}
 
-	nativeTokenPrice, err := ms.db.TokenPrice.QueryTokenPrices(strings.ToLower(gasFee.TokenName))
+	nativeTokenPrice, err := ms.db.TokenPrice.QueryTokenPrices(gasFee.TokenName)
 	if err != nil {
 		log.Error("Query native token price fail", "err", err)
 		return nil, err
