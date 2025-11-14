@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	gas_oracle "github.com/Sandwichzzy/gas-oracle"
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/urfave/cli/v2"
 
@@ -31,7 +32,13 @@ var (
 )
 
 func runOracle(ctx *cli.Context, shutdown context.CancelCauseFunc) (cliapp.Lifecycle, error) {
-	return nil, nil
+	log.Info("running gas oracle...")
+	cfg, err := config.New(ctx.String(ConfigFlag.Name))
+	if err != nil {
+		log.Error("failed to load config", "err", err)
+		return nil, err
+	}
+	return gas_oracle.NewGasOracle(ctx.Context, cfg, shutdown)
 }
 
 func runGRPCSever(ctx *cli.Context, _ context.CancelCauseFunc) (cliapp.Lifecycle, error) {

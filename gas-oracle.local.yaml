@@ -7,7 +7,7 @@ server:
   host: 0.0.0.0
   port: 8081
 
-skyeye_url: http://54.169.32.230:38980
+skyeye_url: http://54.169.32.230:38980 #暂时未使用， token行情价使用写死的数据
 symbols:
   - name: "btc"
     decimal: 6
@@ -15,11 +15,11 @@ symbols:
     decimal: 18
   - name: "usdt"
     decimal: 6
-  - name: "bnb"
-    decimal: 6
   - name: "usdc"
     decimal: 6
-  - name: "cp"
+  - name: "rhs"
+    decimal: 18
+  - name: "twt"
     decimal: 18
 
 rpcs:
@@ -28,31 +28,22 @@ rpcs:
     native_token: ETH
     decimal: 18
 
-  - rpc_url: 'https://opt-sepolia.g.alchemy.com/v2/ejmFf9C-9RAwjDv13Y1fVSUoUN9tm2sh'
-    chain_id: 11155420
-    native_token: ETH
-    decimal: 18
 
-  - rpc_url: 'https://arb-sepolia.g.alchemy.com/v2/ejmFf9C-9RAwjDv13Y1fVSUoUN9tm2sh'
-    chain_id: 421614
-    native_token: ETH
-    decimal: 18
-
-  - rpc_url: 'https://rpc.cpchain.com'
-    chain_id: 86608
-    native_token: CP
+  - rpc_url: 'https://rpc-testnet.roothashpay.com'
+    chain_id: 90101
+    native_token: RHS
     decimal: 18
 
 master_db:
   db_host: "127.0.0.1"
   db_port: 5432
-  db_user: "guoshijiang"
+  db_user: "sandwichzzy"
   db_password: ""
   db_name: "gasoracle"
 
 slave_db:
   db_host: "127.0.0.1"
   db_port: 5432
-  db_user: "guoshijiang"
+  db_user: "sandwichzzy"
   db_password: ""
   db_name: "gasoracle"
